@@ -18,6 +18,12 @@ class Admin::PagesController < Admin::BaseController
     Rails.cache.delete('page_not_exist/'+@page.slug)
   end
 
+  def version
+    @version = Page.find(params[:id])
+    @version.revert_to(params[:version])
+    render :json => @version
+  end
+
   private
   def collection
     return @collection if @collection.present?

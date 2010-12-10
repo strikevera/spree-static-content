@@ -1,4 +1,6 @@
 class Page < ActiveRecord::Base
+  acts_as_versioned :limit => 10
+  self.non_versioned_columns += ['title','slug','show_in_header','show_in_footer','foreign_link','position','visible','meta_keywords','meta_description','layout','show_in_sidebar','created_at','updated_at']
   default_scope :order => "position ASC"
 
   validates_presence_of :title

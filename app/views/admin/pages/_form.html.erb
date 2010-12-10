@@ -1,3 +1,14 @@
+<style>
+ul {list-style: none;margin: 5px 0 0 5px;padding: 0;}
+</style>
+<script>
+function getVersion(pageId,versionId) {
+ $.getJSON('/admin/pages/'+pageId+'/version?version='+versionId, function(data) {
+   $("#body_text").val(data.page.body);
+ });
+} 
+</script>
+
 <table class="admin-report" width="545">
   <tr>
     <td valign="top"><%=t("ext_static_content_title")%>:</td>
@@ -8,8 +19,15 @@
     <td><%= f.text_field :slug, {"style" => "width:500px"} %></td>
   </tr>
   <tr>
-    <td valign="top"><%=t("ext_static_content_body")%>:</td>
-    <td><%= f.text_area :body, {"style" => "width:500px", "class"=> "wymeditor"} %> </td>
+    <td valign="top"><%=t("ext_static_content_body")%>:
+    <ul>
+      <li><b>Prev Versions</b></li>
+      <% @page.versions.each do |v| %>
+        <li><a href="#" onclick="getVersion(<%= @page.id %>,<%= v.version %>);"><%= v.version %></a></li>
+      <% end %>
+    </ul>
+    </td>
+    <td><%= f.text_area :body, {"style" => "width:500px", "id" => "body_text", "class"=> "wymeditor"} %> </td>
   </tr>
   <tr>
     <td valign="top"><%=t("ext_static_content_foreign_link")%>:</td>
