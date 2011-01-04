@@ -8,5 +8,7 @@
   <% end -%>
 <% end -%>
 
-<%= render :inline => @page.body -%>
+<% cache("static#{@page.slug}") do %>
+  <%= render :inline => @page.body -%>
+<% end %>
 
