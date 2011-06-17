@@ -6,7 +6,7 @@ function getVersion(pageId,versionId) {
  $.getJSON('/admin/pages/'+pageId+'/version?version='+versionId, function(data) {
    $("#body_text").val(data.page.body);
  });
-} 
+}
 </script>
 
 <table class="admin-report" width="545">
@@ -29,10 +29,20 @@ function getVersion(pageId,versionId) {
     </td>
     <td><%= f.text_area :body, {"style" => "width:500px", "id" => "body_text", "class"=> "wymeditor"} %> </td>
   </tr>
+<!--
   <tr>
     <td valign="top"><%=t("ext_static_content_foreign_link")%>:</td>
     <td><%= f.text_field :foreign_link, {"style" => "width:500px"} %></td>
   </tr>
+  <tr>
+    <td valign="top"><%=t("ext_static_content_visible")%>:</td>
+    <td><%= f.check_box :visible %></td>
+  </tr>
+  <tr>
+    <td valign="top"><%=t("ext_static_content_layout")%>:</td>
+    <td><%= f.text_field :layout %></td>
+  </tr>
+-->
   <tr>
     <td valign="top"><%=t("ext_static_content_meta_keywords")%>:</td>
     <td><%= f.text_field :meta_keywords, {"style" => "width:500px"} %></td>
@@ -41,12 +51,27 @@ function getVersion(pageId,versionId) {
     <td valign="top"><%=t("ext_static_content_meta_description")%>:</td>
     <td><%= f.text_field :meta_description, {"style" => "width:500px"} %></td>
   </tr>
-  <tr>
-    <td valign="top"><%=t("ext_static_content_layout")%>:</td>
-    <td><%= f.text_field :layout %></td>
-  </tr>
-  <tr>
-    <td valign="top"><%=t("ext_static_content_visible")%>:</td>
-    <td><%= f.check_box :visible %></td>
-  </tr>
 </table>
+
+<script type="text/javascript">
+  function loadEditor(id,config)
+{
+    var instance = CKEDITOR.instances[id];
+    if(instance)
+    {
+        CKEDITOR.remove(instance);
+    }
+    $(id).ckeditor(function() {/* callback code */ },config);
+
+}
+     config = {
+  skin : 'kama',
+    toolbar: [['Format', 'TextColor'],['Bold','Italic','Underline','SpecialChar','-','NumberedList','BulletedList','-','Link','Unlink','-','Image'],['Cut','Copy','Paste','PasteText','PasteFromWord']],
+    width:'600px',
+    height:'400px'
+//      contentsCss : '/stylesheets/cke_designer.css'
+   }
+
+     loadEditor('#body_text',config);
+</script>
+
