@@ -24,7 +24,7 @@ class Admin::PagesController < Admin::BaseController
     render :json => @version
   end
 
-  #private
+  private
   def collection
     return @collection if @collection.present?
     @search = Page.searchlogic(params[:search])
