@@ -29,6 +29,7 @@ class Admin::PagesController < Admin::BaseController
     return @collection if @collection.present?
     @search = Page.searchlogic(params[:search])
     @search.order ||= "ascend_by_title"
-    @collection = @search.do_search.paginate(:per_page => Spree::Config[:admin_products_per_page], :page => params[:page])
+    #@collection = @search.do_search.paginate(:per_page => Spree::Config[:admin_products_per_page], :page => params[:page])
+    @collection = @search.do_search.paginate(:per_page => 50, :page => params[:page])
   end
 end
