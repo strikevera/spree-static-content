@@ -10,6 +10,8 @@
 
 <%= content_for :sidebar do %>&nbsp;<% end %>
 
+<%= content_for :title do %><%= @page.title %><% end %>
+
 <%= content_for :main_content do %>
   <% cache("static#{@page.slug}") do %>
     <% add_crumb "Home", "/" %>
