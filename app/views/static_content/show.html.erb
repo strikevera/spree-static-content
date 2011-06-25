@@ -1,4 +1,4 @@
-<% content_for :head do -%>
+<%= content_for :head do -%>
   <meta name="title" content="<%=@page.title%>">
   <% if @page.attribute_present? :meta_keywords -%>
     <meta name="keywords" content="<%=@page.meta_keywords%>">
@@ -8,7 +8,12 @@
   <% end -%>
 <% end -%>
 
-<% cache("static#{@page.slug}") do %>
-  <%= render :inline => @page.body -%>
-<% end %>
+<%= content_for :sidebar do %>&nbsp;<% end %>
 
+<%= content_for :main_content do %>
+  <% cache("static#{@page.slug}") do %>
+    <% add_crumb "Home", "/" %>
+    <% add_crumb @page.title %>
+    <%= render :inline => @page.body -%>
+  <% end %>
+<% end %>
