@@ -8,11 +8,6 @@
   <% end -%>
 <% end -%>
 
-<%= content_for :title do %>
-	<%= @page.title %>
-<% end %>
-
-
 <% cache("static#{@page.slug}") do %>
   <%= render :inline => @page.body -%>
 <% end %>
