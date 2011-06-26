@@ -19,7 +19,7 @@ function getVersion(pageId,versionId) {
     <td><%= f.text_field :slug, {"style" => "width:500px"} %></td>
   </tr>
   <tr>
-<% @sidebars = {'Fabrics & Trim' => 'fabricstrim', 'Furniture' => 'furniture, 'Duralee Contract' => 'contract'} %>
+<% @sidebars = {'Fabrics & Trim' => 'fabricstrim', 'Furniture' => 'furniture', 'Duralee Contract' => 'contract'} %>
     <td valign="top">Sidebar:</td>
     <td><%= f.select :sidebar_type, "<option>&nbsp;</option>" + options_for_select(@sidebars) %></td>
   </tr>
