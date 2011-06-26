@@ -19,6 +19,17 @@ function getVersion(pageId,versionId) {
     <td><%= f.text_field :slug, {"style" => "width:500px"} %></td>
   </tr>
   <tr>
+    <td valign="top">Sidebar:</td>
+    <td>
+      <select name="sidebar_type">
+        <option value="" selected="selected"></option> 
+        <option value="fabricstrim">Fabrics &amp; Trim</option>
+        <option value="furniture">Furniture</option>
+        <option value="contract">Duralee Contract</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
     <td valign="top"><%=t("ext_static_content_body")%>:
     <ul>
       <li><b>Prev Versions</b></li>
