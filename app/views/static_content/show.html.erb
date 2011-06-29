@@ -14,6 +14,7 @@
   <% cache("static#{@page.slug}") do %>
     <% add_crumb "Home", "/" %>
     <% add_crumb @page.title %>
+    <h1><%= @page.title %></h1>
     <%= render :inline => @page.body -%>
   <% end %>
 <% end %>
