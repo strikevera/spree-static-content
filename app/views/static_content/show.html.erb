@@ -10,12 +10,16 @@
 
 <%= content_for :sidebar do %>&nbsp;<% end %>
 
-<%= content_for :title do %><%= @page.title %><% end %>
-
 <%= content_for :main_content do %>
   <% cache("static#{@page.slug}") do %>
     <% add_crumb "Home", "/" %>
     <% add_crumb @page.title %>
     <%= render :inline => @page.body -%>
   <% end %>
+<% end %>
+
+<%= content_for :title do %><%= @page.title %><% end %>
+
+<%= content_for :og_desc do %>
+<meta property="og:description" content="<%= raw shorten(@page.body) %>" />
 <% end %>
