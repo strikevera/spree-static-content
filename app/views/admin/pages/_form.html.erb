@@ -19,9 +19,8 @@ function getVersion(pageId,versionId) {
     <td><%= f.text_field :slug, {"style" => "width:500px"} %></td>
   </tr>
   <tr>
-<% sidebars = {'None' => 'none', 'Fabrics & Trim' => 'fabricstrim', 'Furniture' => 'furniture', 'Duralee Contract' => 'contract'} %>
     <td valign="top">Sidebar:</td>
-    <td><%= f.select :sidebar_type, options_for_select(sidebars, :selected => @page.sidebar_type || 'none') %></td>
+    <td><%= f.select :sidebar_type, options_for_select(["None", "none"], ["Fabrics & Trim", "fabricstrim"], ["Furniture", "furniture"], ["Duralee Contract", "contract"]] , :selected => @page.sidebar_type || 'none') %></td>
   </tr>
   <tr>
     <td valign="top"><%=t("ext_static_content_body")%>:
