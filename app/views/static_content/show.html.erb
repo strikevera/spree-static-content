@@ -8,9 +8,7 @@
   <% end -%>
 <% end -%>
 
-<%= content_for :sidebar do %>
-	<%= render "shared/page_sidebar" %>
-<% end %>
+<%= get_page_type(@page.slug) %>
 
 <%= content_for :main_content do %>
   <% cache("static#{@page.slug}") do %>
