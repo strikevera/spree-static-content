@@ -1,3 +1,18 @@
+<%= render "shared/page_sidebar" %>
+
+
+<div id="main-content">
+  <% cache("static#{@page.slug}") do %>
+    <% add_crumb "Home", "/" %>
+    <% add_crumb @page.title %>
+    <h1><%= @page.title %></h1>
+    <%= render :inline => @page.body -%>
+  <% end %>
+	<script type="text/javascript">
+	  $("#main-content").addClass("content-page");
+	</script>
+</div><!-- #main-content -->
+
 <%= content_for :head do -%>
   <meta name="title" content="<%=@page.title%>">
   <% if @page.attribute_present? :meta_keywords -%>
@@ -6,20 +21,6 @@
   <% if @page.attribute_present? :meta_description -%>
     <meta name="description" content="<%=@page.meta_description%>">
   <% end -%>
-<% end -%>
-
-<%= render :partial => "shared/page_sidebar" %>
-
-<%= content_for :main_content do %>
-  <% cache("static#{@page.slug}") do %>
-    <% add_crumb "Home", "/" %>
-    <% add_crumb @page.title %>
-    <h1><%= @page.title %></h1>
-    <%= render :inline => @page.body -%>
-  <% end %>
-<script type="text/javascript">
-  $("#main-content").addClass("content-page");
-</script>
 <% end %>
 
 <%= content_for :title do %><%= @page.title %><% end %>
