@@ -5,10 +5,10 @@
 	<%= render 'shared/advsearch' %>
 	
   <% cache("static#{@page.slug}") do %>
-    <% add_crumb "Home", "/" %>
-    <% add_crumb @page.title %>
-    
-    <%= render 'shared/advsearch' %>
+  	<div id="breadcrumbs">
+  	  <% add_crumb "Home", "/" %>
+	    <% add_crumb @page.title %>
+    </div>
     
     <h1><%= @page.title %></h1>
     <%= render :inline => @page.body -%>
