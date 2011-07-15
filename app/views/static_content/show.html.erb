@@ -1,16 +1,18 @@
 <%= render "shared/page_sidebar" %>
 
 
-<div id="main-content">
+<div id="main-content" class="content-page">
+	<%= render 'shared/advsearch' %>
+	
   <% cache("static#{@page.slug}") do %>
     <% add_crumb "Home", "/" %>
     <% add_crumb @page.title %>
+    
+    <%= render 'shared/advsearch' %>
+    
     <h1><%= @page.title %></h1>
     <%= render :inline => @page.body -%>
   <% end %>
-	<script type="text/javascript">
-	  $("#main-content").addClass("content-page");
-	</script>
 </div><!-- #main-content -->
 
 <%= content_for :head do -%>
