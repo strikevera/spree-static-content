@@ -6,8 +6,9 @@
 	
   <% cache("static#{@page.slug}") do %>
   	<div id="breadcrumbs">
-  	  <% add_crumb "Home", "/" %>
-	    <% add_crumb @page.title %>
+  	  <% #add_crumb "Home", "/" %>
+	    <% #add_crumb @page.title %>
+	    <%= get_page_breadcrumbs(@page.slug) %>
     </div>
     
     <h1><%= @page.title %></h1>
