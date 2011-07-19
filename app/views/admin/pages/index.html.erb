@@ -13,6 +13,7 @@
 	<tr>
 		<th><%=t("ext_static_content_title")%></th>
 		<th><%=t("ext_static_content_link")%></th>
+		<th>Sidebar</th>
 		<th><%=t("ext_static_content_visible")%></th>
 		<th><%=t("action")%></th>
   </tr>
@@ -31,6 +32,11 @@
 			</td>
 			<td>
 				<%= link_to page.link, page.link %>
+			</td>
+			<td>
+				<% unless page.sidebar_type.nil? %>
+					<%= page.sidebar_type %>
+				<% end %>
 			</td>
 			<td>
 			  <%= page.visible %>
