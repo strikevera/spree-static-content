@@ -17,7 +17,14 @@
 		<th><%=t("action")%></th>
   </tr>
 	<tbody>
-    	<% @pages.each do |page| %>
+		<% @pages.sort_by{ |x| [
+			x.sidebar_type || "",
+			x.slug.split("/")[1] || "",
+  		x.slug.split("/")[2] || "", 
+  		x.slug.split("/").length || 0, 
+  		x.title || ""]}
+  	%>
+    <% @pages.each do |page| %>
 		<tr class="<%= cycle('even', 'odd') %>" id="<%= dom_id page %>">
 			<td>
 				<%= page.title %>
