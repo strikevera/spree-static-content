@@ -20,7 +20,7 @@ function getVersion(pageId,versionId) {
   </tr>
   <tr>
     <td valign="top">Sidebar:</td>
-    <td><%= f.select :sidebar_type, options_for_select([["None", "none"], ["Fabrics & Trim", "fabricstrim"], ["Furniture", "furniture"], ["Duralee Contract", "contract"], ["Policies", "policies"]] , :selected => @page.sidebar_type || 'none') %></td>
+    <td><%= f.select :sidebar_type, options_for_select([["None", ""], ["Fabrics & Trim", "fabricstrim"], ["Furniture", "furniture"], ["Duralee Contract", "contract"], ["Policies", "policies"]] , :selected => @page.sidebar_type || 'none') %></td>
   </tr>
   <tr>
     <td valign="top"><%=t("ext_static_content_body")%>:
